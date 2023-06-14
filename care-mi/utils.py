@@ -5,7 +5,10 @@ import config as cfg
 import pandas as pd
 
 def save_sheet(data: pd.DataFrame, fp: str):
-    postfix = fp.split('.')[-1]
+    dir_path = os.path.dirname(fp)
+    postfix  = fp.split('.')[-1]
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
     if postfix   == 'csv': data.to_csv(fp, index=False)
     elif postfix == 'xlsx': data.to_excel(fp, index=False)
     elif postfix == 'tsv': data.to_csv(fp, sep='\t', index=False)

@@ -11,7 +11,7 @@ from instructions import *
 from tqdm import tqdm
 from joblib import Parallel, delayed
 
-openai.api_key = cfg.OPENAI_API_KEY
+os.environ['OPENAI_API_KEY']=cfg.OPENAI_API_KEY
 
 def get_chat_input_(statement: str) -> str:
     return f"""
@@ -37,7 +37,7 @@ def negation_api_call_(statement: str) -> str:
     return response
 
 def negation_async_(statements: list, njobs=0) -> list:
-    if 'njobs' <= 0:
+    if njobs <= 0:
         njobs = os.cpu_count()
     respones = Parallel(n_jobs=njobs)(delayed(negation_api_call_)(s) for s in tqdm(statements))
     return respones
@@ -76,16 +76,15 @@ def eval_failed_(data: pd.DataFrame, results: list, njobs: int):
 
 def main(args):
     if   args.dataset == "BIOS":
-        fp = os.path.join(cfg.BIOS,    "statement.tsv")
+        folder = cfg.BIOS
     elif args.dataset == "CPUBMED":
-        fp = os.path.join(cfg.CPUBMED, "statement.tsv")
+        folder = cfg.CPUBMED
     elif args.dataset == "MEDQA":
-        fp = os.path.join(cfg.MEDQA,   "statement.tsv")
+        folder = cfg.MEDQA
     elif args.dataset == "MLECQA":
-        fp = os.path.join(cfg.MLECQA,  "statement.tsv")
-    else:
-        raise NotImplementedError
-    data = utils.load_sheet(fp, converters={'wrong_answer': utils.convert_list_str_to_list})
+        folder = cfg.MLECQA
+    fp   = os.path.join(folder, "statements.tsv")
+    data = utils.load_sheet(fp)
     statements = data["statement"].tolist()
     results    = batch_rule_based_negation_(statements)
     results    = eval_failed_(data, results, args.njobs)
@@ -100,16 +99,15 @@ def main(args):
             results = eval_failed_(data, results, args.njobs)
             max_iter -= 1
     data["statement-neg"] = results
-    save_fp = os.path.join(args.data_folder, args.save_name)
+    save_fp = os.path.join(folder, "statements-neg.tsv")
     utils.save_sheet(data, save_fp)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('Generate negated sentences using from declarative sentences.')
+    parser = argparse.ArgumentParser('Generate negated sentences from declarative sentences.')
     parser.add_argument('--dataset',     type=str,   default="BIOS", choices=["MEDQA", "MLECQA", "BIOS", "CPUBMED"])
     parser.add_argument('--njobs',       type=int,   default=15)
     parser.add_argument('--max_iter',    type=int,   default=3, help="Max iterations of failed samples evaluation.")
     parser.add_argument('--interval',    type=float, default=5.0, help="Time interval waited between each round.")
-    parser.add_argument('--save_name',   type=str,   default="statements-neg.tsv")
     parser.add_argument('--eval_failed', action='store_false', default=True)
     args = parser.parse_args()
     main(args)

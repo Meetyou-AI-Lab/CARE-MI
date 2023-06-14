@@ -100,3 +100,8 @@ N:胎头最低点在坐骨棘水平不说明胎头已经衔接。
 Now, given the following sample, generate the negated declarative sentences:
 
 """
+
+QG_CHATYUAN_TF_PROMPT = {
+    'pre': "请帮我把：",
+    'post': "。这个陈述转化成一个问题。只输出一个问题即可。直接在最后加上'吗？'作为问题。输出的问题必须以'？'结尾。保留陈述句的内容。"
+}

@@ -101,7 +101,6 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Knowledge retrieval.")
-    parser.add_argument('--dataset',   type=str, default='CPUBMED',   choices=["BIOS", "CPUBMED", "MEDQA", "MLECQA"])
     parser.add_argument('--corpus',    type=str, default='wikipedia', choices=['wikipedia', 'textbook'])
     parser.add_argument('--retriever', type=str, default='BM25Okapi', choices=["BM25Okapi", "BM25L", "BM25Plus"])
     parser.add_argument('--n',         type=int, default=3,           help="Top n")

@@ -10,7 +10,7 @@ import config as cfg
 import pandas as pd
 import numpy as np
 
-openai.api_key = cfg.OPENAI_API_KEY
+os.environ['OPENAI_API_KEY']=cfg.OPENAI_API_KEY
 
 def get_chat_input_(question: str, answer: str):
     return f"""
@@ -38,7 +38,7 @@ def qa2d_api_call_(question: str, answer: str):
     return response
 
 def qa2d_async_(questions: list, answers: list, njobs=0):
-    if 'njobs' <= 0:
+    if njobs <= 0:
         njobs = os.cpu_count()
     respones = Parallel(n_jobs=njobs)(delayed(qa2d_api_call_)(q, a) for q, a in tqdm(zip(questions, answers)))
     return respones
@@ -55,11 +55,10 @@ def eval_failed_(data: pd.DataFrame, results: list, njobs: int):
 
 def main(args):
     if   args.dataset == "MEDQA":
-        fp = os.path.join(cfg.MEDQA,  "statement.tsv")
+        folder = cfg.MEDQA
     elif args.dataset == "MLECQA":
-        fp = os.path.join(cfg.MLECQA, "statement.tsv")
-    else:
-        raise NotImplementedError
+        folder = cfg.MLECQA
+    fp   = os.path.join(folder, "qa.tsv")
     data = utils.load_sheet(fp, converters={'wrong_answer': utils.convert_list_str_to_list})
     questions = data['question'].tolist()
     answers   = data['answer'].tolist()
@@ -82,17 +81,15 @@ def main(args):
             results = eval_failed_(data, results, args.njobs)
             max_iter -= 1
     data["statement"] = results
-    save_fp = os.path.join(args.data_folder, args.save_name)
+    save_fp = os.path.join(folder, "statements.tsv")
     utils.save_sheet(data, save_fp)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Generate declarative sentences using QA pairs.')
     parser.add_argument('--dataset',     type=str,   default="MEDQA", choices=["MEDQA", "MLECQA"])
-    parser.add_argument('--file_name',   type=str,   default='qa.tsv')
     parser.add_argument('--njobs',       type=int,   default=15)
     parser.add_argument('--max_iter',    type=int,   default=3, help="Max iterations of failed samples evaluation.")
     parser.add_argument('--interval',    type=float, default=5.0, help="Time interval waited between each round.")
-    parser.add_argument('--save_name',   type=str,   default="statements.tsv")
     parser.add_argument('--eval_failed', action='store_false', default=True)
     args = parser.parse_args()
     main(args)

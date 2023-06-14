@@ -135,3 +135,5 @@ data/CPUBMED/*
 data/MEDQA/*
 data/MLECQA/*
 data/WORDLIST/*
+
+!data/benchmark/examples.tsv

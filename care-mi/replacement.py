@@ -147,6 +147,6 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Generate false declarative sentences using true ones.')
-    parser.add_argument('--dataset', type=str, default="MEDQA", choices=["MEDQA", "MLECQA"])
+    parser.add_argument('--dataset', type=str, default="MEDQA", choices=["BIOS", "CPUBMED", "MEDQA", "MLECQA"])
     args = parser.parse_args()
     main(args)
