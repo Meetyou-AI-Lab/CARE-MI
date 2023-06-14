@@ -1,16 +1,8 @@
-<p align="center">
-  <picture>
-    <img alt="Meetyou Logo" src="https://static.meetyouintl.com/ctrm-home/meiyou-logo-nav@3x.58ade908.png" style="max-width: 100%;">
-  </picture>
-  <br/>
-  <br/>
-</p>
-
 # CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care
 
 This repository is the official implementation of **CARE-MI**. It contains the codes for reproducing the benchmark construction procedure and experiment related information. Examples of the benchmark can be found in `examples.tsv`. The full set of the benchmark will be made public later.
 
-The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&name=pdf).
+The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&name=pdf). We will publicly release the dataset at a later stage.
 
 
 **Authors**:
@@ -193,7 +185,7 @@ Note: *We only randomly select 200 questions from the benchmark for human baseli
 
 ## Judgment models
 
-We fine-tune judgment models using the labels given by human annotators. We try four models:
+Since the human evaluation can be time-consuming and expensive, we explore the usage of judgment models as a proxy for human supervision. To this end, we fine-tune judgment models using the labels given by human annotators. We try four models:
 
 - `BERT-Large`
 - `GPT-3-350M`
@@ -218,3 +210,23 @@ The performance of each judgment model is shown below:
 |------------------|----------------|----------------|----------------|-----------------|
 | Correctness      | 0.560          | 0.835          | 0.858          | **0.898**       |
 | Interpretability | 0.794          | 0.822          | 0.828          | **0.835**       |
+
+## Citation
+
+**If the paper, codes, or the dataset inspire you, please kindly cite us:**
+
+```
+@inproceedings{xiang2023caremi,
+    title={CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care},
+    author={Xiang, Tong and Li, Liangzhi and Li, Wangyue and Bai, Mingbai and Wei, Lu and Wang, Bowen and Garcia, Noa},
+    booktitle={OpenReivew},
+    year={2023}
+}
+```
+
+<p align="center">
+  <picture>
+    <img alt="figs/meetyou-logo.png" style="max-width: 100%;">
+  </picture>
+  <br/>
+</p>
