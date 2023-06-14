@@ -19,9 +19,9 @@ The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&na
   <ul>
       <li>Tong Xiang (<a href="mailto:xiangtong@xiaoyouzi.com">xiangtong@xiaoyouzi.com</a>)
       <li>Liangzhi Li (<a href="mailto:liliangzhi@xiaoyouzi.com">liliangzhi@xiaoyouzi.com</a>)
-      <li>Wangyue Li (<a href="mailto:alee90792@gmail.com">alee90792@gmail.com</a>)
+      <li>Wangyue Li (<a href="mailto:liwangyue@xiaoyouzi.com">liwangyue@xiaoyouzi.com</a>)
       <li>Mingbai Bai (<a href="mailto:baimingbai@xiaoyouzi.com">baimingbai@xiaoyouzi.com</a>)
-      <li>Lu Wei (<a href="mailto:weilu_56@163.com">weilu_56@163.com</a>)
+      <li>Lu Wei (<a href="mailto:weilu@xiaoyouzi.com">weilu@xiaoyouzi.com</a>)
       <li>Bowen Wang (<a href="mailto:bowen.wang@is.ids.osaka-u.ac.jp">bowen.wang@is.ids.osaka-u.ac.jp</a>)
       <li>Noa Garcia (<a href="mailto:noagarcia@ids.osaka-u.ac.jp">noagarcia@ids.osaka-u.ac.jp</a>)
   </ul>
@@ -193,7 +193,7 @@ Note: *We only randomly select 200 questions from the benchmark for human baseli
 
 ## Judgment models
 
-We fine-tune judgment models to using the labels given by human annotators. We try four models:
+We fine-tune judgment models using the labels given by human annotators. We try four models:
 
 - `BERT-Large`
 - `GPT-3-350M`
