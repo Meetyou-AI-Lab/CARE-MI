@@ -6,28 +6,17 @@ The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&na
 
 
 **Authors**:
-<div style="overflow: hidden;">
-  <div style="float: left; width: 40%;">
-    <ul>
-        <li>Tong Xiang
-        <li>Liangzhi Li
-        <li>Wangyue Li
-        <li>Mingbai Bai
-        <li>Lu Wei
-        <li>Bowen Wang
-        <li>Noa Garcia
-    </ul>
-  </div>
-  <div style="float: left; width: 60%;">
-    <a href="mailto:xiangtong@xiaoyouzi.com">xiangtong@xiaoyouzi.com</a></br>
-    <a href="mailto:liliangzhi@xiaoyouzi.com">liliangzhi@xiaoyouzi.com</a></br>
-    <a href="mailto:alee90792@gmail.com">alee90792@gmail.com</a></br>
-    <a href="mailto:baimingbai@xiaoyouzi.com">baimingbai@xiaoyouzi.com</a></br>
-    <a href="mailto:weilu_56@163.com">weilu_56@163.com</a></br>
-    <a href="mailto:bowen.wang@is.ids.osaka-u.ac.jp">bowen.wang@is.ids.osaka-u.ac.jp</a></br>
-    <a href="mailto:noagarcia@ids.osaka-u.ac.jp">noagarcia@ids.osaka-u.ac.jp</a></br>
-  </div>
 
+<div style="overflow: hidden;">
+  <ul>
+      <li>Tong Xiang (<a href="mailto:xiangtong@xiaoyouzi.com">xiangtong@xiaoyouzi.com</a>)
+      <li>Liangzhi Li (<a href="mailto:liliangzhi@xiaoyouzi.com">liliangzhi@xiaoyouzi.com</a>)
+      <li>Wangyue Li (<a href="mailto:alee90792@gmail.com">alee90792@gmail.com</a>)
+      <li>Mingbai Bai (<a href="mailto:baimingbai@xiaoyouzi.com">baimingbai@xiaoyouzi.com</a>)
+      <li>Lu Wei (<a href="mailto:weilu_56@163.com">weilu_56@163.com</a>)
+      <li>Bowen Wang (<a href="mailto:bowen.wang@is.ids.osaka-u.ac.jp">bowen.wang@is.ids.osaka-u.ac.jp</a>)
+      <li>Noa Garcia (<a href="mailto:noagarcia@ids.osaka-u.ac.jp">noagarcia@ids.osaka-u.ac.jp</a>)
+  </ul>
 </div>
 
 ## Overview
@@ -170,14 +159,14 @@ The following tables present the human evaluation results of LLMs tested on our 
 
 | **Model**        |           **All**           |           **BIOS**          |         **CPubMed**         |         **MLEC-QA**         |          **MEDQA**          |
 |------------------|:---------------------------:|:---------------------------:|:---------------------------:|:---------------------------:|:---------------------------:|
-| MOSS-16B-SFT     | 0.671$\pm$0.321             | 0.930$\pm$0.121             | 0.925$\pm$0.166             | 0.644$\pm$0.332             | 0.639$\pm$0.316             |
-| ChatGLM-6B       | 0.610$\pm$0.333             | 0.928$\pm$0.116             | 0.748$\pm$0.264             | 0.579$\pm$0.346             | 0.599$\pm$0.328             |
-| BELLE-7B-2M      | 0.647$\pm$0.315             | 0.843$\pm$0.268             | 0.928$\pm$0.175             | 0.631$\pm$0.314             | 0.605$\pm$0.311             |
-| BELLE-7B-0.2M    | 0.670$\pm$0.316             | 0.947$\pm$0.095             | 0.942$\pm$0.141             | 0.624$\pm$0.335             | 0.646$\pm$0.302             |
-| GPT-4            | **0.867$\pm$0.215**         | <u>0.958$\pm$0.125</u>      | **0.967$\pm$0.124**         | **0.851$\pm$0.233**         | **0.858$\pm$0.211**         |
-| GPT-3.5-turbo    | <u>0.824$\pm$0.263</u>      | **0.973$\pm$0.108**         | <u>0.948$\pm$0.160</u>      | <u>0.799$\pm$0.279</u>      | <u>0.815$\pm$0.263</u>      |
-| LLaMA-13B-T      | 0.709$\pm$0.301             | 0.871$\pm$0.235             | 0.922$\pm$0.178             | 0.678$\pm$0.311             | 0.689$\pm$0.297             |
-| Human Baseline*  | 0.938$\pm$0.213             | 1.000$\pm$0.000             | 1.000$\pm$0.000             | 0.945$\pm$0.196             | 0.908$\pm$0.262             |
+| MOSS-16B-SFT     | 0.671 $\pm$ 0.321             | 0.930 $\pm$ 0.121             | 0.925 $\pm$ 0.166             | 0.644 $\pm$ 0.332             | 0.639 $\pm$ 0.316             |
+| ChatGLM-6B       | 0.610 $\pm$ 0.333             | 0.928 $\pm$ 0.116             | 0.748 $\pm$ 0.264             | 0.579 $\pm$ 0.346             | 0.599 $\pm$ 0.328             |
+| BELLE-7B-2M      | 0.647 $\pm$ 0.315             | 0.843 $\pm$ 0.268             | 0.928 $\pm$ 0.175             | 0.631 $\pm$ 0.314             | 0.605 $\pm$ 0.311             |
+| BELLE-7B-0.2M    | 0.670 $\pm$ 0.316             | 0.947 $\pm$ 0.095             | 0.942 $\pm$ 0.141             | 0.624 $\pm$ 0.335             | 0.646 $\pm$ 0.302             |
+| GPT-4            | **0.867 $\pm$ 0.215**         | <u>0.958 $\pm$ 0.125</u>      | **0.967 $\pm$ 0.124**         | **0.851 $\pm$ 0.233**         | **0.858 $\pm$ 0.211**         |
+| GPT-3.5-turbo    | <u>0.824 $\pm$ 0.263</u>      | **0.973 $\pm$ 0.108**         | <u>0.948 $\pm$ 0.160</u>      | <u>0.799 $\pm$ 0.279</u>      | <u>0.815 $\pm$ 0.263</u>      |
+| LLaMA-13B-T      | 0.709 $\pm$ 0.301             | 0.871 $\pm$ 0.235             | 0.922 $\pm$ 0.178             | 0.678 $\pm$ 0.311             | 0.689 $\pm$ 0.297             |
+| Human Baseline*  | 0.938 $\pm$ 0.213             | 1.000 $\pm$ 0.000             | 1.000 $\pm$ 0.000             | 0.945 $\pm$ 0.196             | 0.908 $\pm$ 0.262             |
 
 Note: *We only randomly select 200 questions from the benchmark for human baseline evaluation.*
 
@@ -185,14 +174,14 @@ Note: *We only randomly select 200 questions from the benchmark for human baseli
 
 | **Model**        |           **All**           |           **BIOS**          |         **CPubMed**         |         **MLEC-QA**         |          **MEDQA**          |
 |------------------|:---------------------------:|:---------------------------:|:---------------------------:|:---------------------------:|:---------------------------:|
-| MOSS-16B-SFT     | 0.671$\pm$0.321             | 0.930$\pm$0.121             | 0.925$\pm$0.166             | 0.644$\pm$0.332             | 0.639$\pm$0.316             |
-| ChatGLM-6B       | 0.610$\pm$0.333             | 0.928$\pm$0.116             | 0.748$\pm$0.264             | 0.579$\pm$0.346             | 0.599$\pm$0.328             |
-| BELLE-7B-2M      | 0.647$\pm$0.315             | 0.843$\pm$0.268             | 0.928$\pm$0.175             | 0.631$\pm$0.314             | 0.605$\pm$0.311             |
-| BELLE-7B-0.2M    | 0.670$\pm$0.316             | 0.947$\pm$0.095             | 0.942$\pm$0.141             | 0.624$\pm$0.335             | 0.646$\pm$0.302             |
-| GPT-4            | **0.867$\pm$0.215**         | <u>0.958$\pm$0.125</u>      | **0.967$\pm$0.124**         | **0.851$\pm$0.233**         | **0.858$\pm$0.211**         |
-| GPT-3.5-turbo    | <u>0.824$\pm$0.263</u>      | **0.973$\pm$0.108**         | <u>0.948$\pm$0.160</u>      | <u>0.799$\pm$0.279</u>      | <u>0.815$\pm$0.263</u>      |
-| LLaMA-13B-T      | 0.709$\pm$0.301             | 0.871$\pm$0.235             | 0.922$\pm$0.178             | 0.678$\pm$0.311             | 0.689$\pm$0.297             |
-| Human Baseline*  | 0.938$\pm$0.213             | 1.000$\pm$0.000             | 1.000$\pm$0.000             | 0.945$\pm$0.196             | 0.908$\pm$0.262             |
+| MOSS-16B-SFT     | 0.671 $\pm$ 0.321             | 0.930 $\pm$ 0.121             | 0.925 $\pm$ 0.166             | 0.644 $\pm$ 0.332             | 0.639 $\pm$ 0.316             |
+| ChatGLM-6B       | 0.610 $\pm$ 0.333             | 0.928 $\pm$ 0.116             | 0.748 $\pm$ 0.264             | 0.579 $\pm$ 0.346             | 0.599 $\pm$ 0.328             |
+| BELLE-7B-2M      | 0.647 $\pm$ 0.315             | 0.843 $\pm$ 0.268             | 0.928 $\pm$ 0.175             | 0.631 $\pm$ 0.314             | 0.605 $\pm$ 0.311             |
+| BELLE-7B-0.2M    | 0.670 $\pm$ 0.316             | 0.947 $\pm$ 0.095             | 0.942 $\pm$ 0.141             | 0.624 $\pm$ 0.335             | 0.646 $\pm$ 0.302             |
+| GPT-4            | **0.867 $\pm$ 0.215**         | <u>0.958 $\pm$ 0.125</u>      | **0.967 $\pm$ 0.124**         | **0.851 $\pm$ 0.233**         | **0.858 $\pm$ 0.211**         |
+| GPT-3.5-turbo    | <u>0.824 $\pm$ 0.263</u>      | **0.973 $\pm$ 0.108**         | <u>0.948 $\pm$ 0.160</u>      | <u>0.799 $\pm$ 0.279</u>      | <u>0.815 $\pm$ 0.263</u>      |
+| LLaMA-13B-T      | 0.709 $\pm$ 0.301             | 0.871 $\pm$ 0.235             | 0.922 $\pm$ 0.178             | 0.678 $\pm$ 0.311             | 0.689 $\pm$ 0.297             |
+| Human Baseline*  | 0.938 $\pm$ 0.213             | 1.000 $\pm$ 0.000             | 1.000 $\pm$ 0.000             | 0.945 $\pm$ 0.196             | 0.908 $\pm$ 0.262             |
 
 ## Judgment models
 
