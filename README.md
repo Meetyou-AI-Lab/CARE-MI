@@ -1,8 +1,8 @@
 # CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care
 
-This repository is the official implementation of **CARE-MI**. It contains the codes for reproducing the benchmark construction procedure and experiment related information. Examples of the benchmark can be found in `examples.tsv`. The full set of the benchmark will be made public later.
+This repository is the official implementation of **CARE-MI**. It contains the codes for reproducing the benchmark construction procedure and experiment related information. Examples of the benchmark can be found in `examples.tsv`.
 
-The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&name=pdf). We will publicly release the dataset at a later stage.
+The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&name=pdf). The benchmark will be made public at a later stage.
 
 
 **Authors**:
