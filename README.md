@@ -1,9 +1,3 @@
-<p align="center">
-  <picture>
-    <img alt="Meetyou Logo" src="https://static.meetyouintl.com/ctrm-home/meiyou-logo-nav@3x.58ade908.png" style="max-width: 100%;">
-  </picture>
-</p>
-
 # CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care
 
 This repository is the official implementation of **CARE-MI**. It contains the codes for reproducing the benchmark construction procedure and experiment related information. Examples of the benchmark can be found in `examples.tsv`. The full set of the benchmark will be made public later.
