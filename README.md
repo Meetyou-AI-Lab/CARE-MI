@@ -152,7 +152,7 @@ We evaluate the following models (:heavy_check_mark: means available, :x: indica
 
 Note that we further pretrain and fine-tune the original `LLaMA-13B` with Chinese corpus and selected instruction following tasks to obtain `LLaMA-13B-T`. We refer the readers to its original [github page](https://github.com/facebookresearch/llama) and [fastchat](https://github.com/lm-sys/FastChat) for further details about pretraining and fine-tuning a `LLaMA` model.
 
-The following tables present the human evaluation results of LLMs tested on our proposed benchmark, on two different metrics, e.g., correctness and interpretability. For the evaluation, each annotator is required to assign a scalar between 0 and 1 for each metric on each sample. More details can be found in the paper.
+The following tables present the human evaluation results of LLMs tested on our proposed benchmark, on two different metrics, e.g., correctness and interpretability. For the evaluation, each annotator is required to assign a scalar between 0 and 1 for each metric on each sample. Best performanced models are bolded and the second best ones are underlined. More details can be found in the paper.
 
 
 **Correctness**
@@ -219,7 +219,7 @@ The performance of each judgment model is shown below:
 @inproceedings{xiang2023caremi,
     title={CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care},
     author={Xiang, Tong and Li, Liangzhi and Li, Wangyue and Bai, Mingbai and Wei, Lu and Wang, Bowen and Garcia, Noa},
-    booktitle={OpenReivew},
+    booktitle={OpenReview},
     year={2023}
 }
 ```
