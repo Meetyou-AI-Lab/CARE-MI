@@ -192,7 +192,7 @@ Since the human evaluation can be time-consuming and expensive, we explore the u
 - `GPT-3-6.7B`
 - `LLaMA-13B-T` 
 
-For the fine-tuning, for each sample, we concatenate the question, corresponding knowledge, and the model output together and feed them to the model. Each sample has a label given by the annotators. For fine-tuning `GPT-3-350M` and `GPT-3-6.7B`, please check the instruction given by [OpenAI](https://platform.openai.com/docs/guides/fine-tuning). For fine-tuning `LLaMA-13-T`, please check [fastchat](https://github.com/lm-sys/FastChat). More details are presented in the paper.
+For the fine-tuning, for each sample, we concatenate the question, corresponding knowledge, and the model output together and feed them to the model. Each sample has a label given by the annotators. For fine-tuning `GPT-3-350M` and `GPT-3-6.7B`, please check the instruction given by [OpenAI](https://platform.openai.com/docs/guides/fine-tuning). For fine-tuning `LLaMA-13-T`, please check [fastchat](https://github.com/lm-sys/FastChat).
 
 The performance of each judgment model is shown below:
 
