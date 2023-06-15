@@ -30,8 +30,6 @@ We include two types of questions in the benchmark:
 - **True/False (TF) Question**: Given a question, the LLM is required to judge whether the claim in the question is correct or not.
 - **Open-End (OE) Question**: Given a question, the LLM is allowed to provide a free-form, open-ended answer in response to the question. Unlike TF questions, the answers to OE questions are not limited to True/False judgments.
 
-For this version of benchmark, we include TF questions for all samples and OE questions only for MC samples.
-
 ### Topic filtering
 We utilize word lists to filter out samples that are related to maternity and infant care topic. The word list that we use are listed below:
 | **Source**                                                                                   | **Language**   | **Size**      |
