@@ -62,7 +62,7 @@ conda activate care-mi
 
 To get domain-filtered data for all datasets, run:
 ```
-python preprocessing.py
+python preprocess.py
 ```
 
 ### True statement generation
