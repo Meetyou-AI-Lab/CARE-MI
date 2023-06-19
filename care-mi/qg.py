@@ -1,10 +1,10 @@
-import os
 import re
 import utils
 import torch
 import argparse
 import config as cfg
 import pandas as pd
+from os.path import join
 from instructions import *
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
@@ -107,7 +107,7 @@ def main(args):
         folder = cfg.MEDQA
     elif args.dataset == "MLECQA":
         folder = cfg.MLECQA
-    fp   = os.path.join(folder, "statements.tsv")
+    fp   = join(folder, "statements.tsv")
     data = utils.load_sheet(fp)
     if args.dataset == "BIOS" or "CPUBMED":
         data = generate_tf_question(data)
@@ -115,7 +115,7 @@ def main(args):
     else:
         data = generate_tf_question(data)
         data = generate_open_question(data)
-    utils.save_sheet(data, os.path.join(folder, f"statments-qg.tsv"))
+    utils.save_sheet(data, join(folder, f"statments-qg.tsv"))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Generate questions from declarative sentences.')

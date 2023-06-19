@@ -7,6 +7,7 @@ import argparse
 import openai
 import pandas as pd
 import numpy as np
+from os.path import join
 from instructions import *
 from tqdm import tqdm
 from joblib import Parallel, delayed
@@ -83,7 +84,7 @@ def main(args):
         folder = cfg.MEDQA
     elif args.dataset == "MLECQA":
         folder = cfg.MLECQA
-    fp   = os.path.join(folder, "statements.tsv")
+    fp   = join(folder, "statements.tsv")
     data = utils.load_sheet(fp)
     statements = data["statement"].tolist()
     results    = batch_rule_based_negation_(statements)
@@ -99,7 +100,7 @@ def main(args):
             results = eval_failed_(data, results, args.njobs)
             max_iter -= 1
     data["statement-neg"] = results
-    save_fp = os.path.join(folder, "statements-neg.tsv")
+    save_fp = join(folder, "statements-neg.tsv")
     utils.save_sheet(data, save_fp)
 
 if __name__ == '__main__':

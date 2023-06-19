@@ -1,4 +1,3 @@
-import os
 import time
 import csv
 import re
@@ -6,10 +5,11 @@ import utils
 import config as cfg
 import pandas as pd
 import numpy as np
+from os.path import join, exists
 
 def load_topic_words(filter: bool=True) -> list:
     fn = 'combined.txt' if not filter else 'filtered.txt' 
-    fp = os.path.join(cfg.WORDLIST, fn)
+    fp = join(cfg.WORDLIST, fn)
     with open(fp, 'r', encoding='utf-8') as reader:
         words = reader.readlines()
     words = [w.strip() for w in words]
@@ -19,10 +19,10 @@ def load_topic_words(filter: bool=True) -> list:
 
 def load_bios_conceptterms() -> pd.DataFrame:
     start_time = time.time()
-    conceptterms_path = os.path.join(cfg.BIOS_SRC, "ConceptTerms_zh.csv")
-    if not os.path.join(conceptterms_path):
+    conceptterms_path = join(cfg.BIOS_SRC, "ConceptTerms_zh.csv")
+    if not join(conceptterms_path):
         conceptterms_all = pd.read_csv(
-            os.path.join(cfg.BIOS_SRC, "ConceptTerms.txt"),
+            join(cfg.BIOS_SRC, "ConceptTerms.txt"),
             sep="|",
             usecols=[0,1,2,3],
             header=None,
@@ -39,7 +39,7 @@ def load_bios_conceptterms() -> pd.DataFrame:
 
 def load_bios_relations() -> pd.DataFrame:
     start_time = time.time()
-    relations = pd.read_csv(os.path.join(cfg.BIOS_SRC, "Relations.txt"),
+    relations = pd.read_csv(join(cfg.BIOS_SRC, "Relations.txt"),
         sep="|", usecols=[1,2,3], dtype={1: str, 2: str, 3: "category"},
         header=None)
     relations.columns = ['CID_HEAD', 'CID_TAIL', 'RELID']
@@ -50,7 +50,7 @@ def load_bios_relations() -> pd.DataFrame:
     return relations
 
 def load_bios_relationnames() -> pd.DataFrame:
-    relationname_path = os.path.join(cfg.BIOS_SRC, "RelationNames.txt")
+    relationname_path = join(cfg.BIOS_SRC, "RelationNames.txt")
     relationname = pd.read_csv(relationname_path, sep="|", header=None)
     relationname.columns = ['RELID', 'LANG', 'REL']
     relationname = relationname.astype({"RELID": 'int32'})
@@ -59,7 +59,7 @@ def load_bios_relationnames() -> pd.DataFrame:
     return relationname
 
 def load_bios_semantictypes() -> pd.DataFrame:
-    semantictypes_path = os.path.join(cfg.BIOS_SRC, "SemanticTypes.txt")
+    semantictypes_path = join(cfg.BIOS_SRC, "SemanticTypes.txt")
     semantictypes = pd.read_csv(semantictypes_path, sep="|", usecols=[0, 1], header=None)
     semantictypes.columns = ['CID', 'STYID']
     semantictypes = semantictypes.astype({"STYID": 'int32'})
@@ -67,7 +67,7 @@ def load_bios_semantictypes() -> pd.DataFrame:
     return semantictypes
 
 def load_bios_semanticnetwork() -> pd.DataFrame:
-    semanticnetwork_path = os.path.join(cfg.BIOS_SRC, "SemanticNetwork.txt")
+    semanticnetwork_path = join(cfg.BIOS_SRC, "SemanticNetwork.txt")
     semanticnetwork = pd.read_csv(semanticnetwork_path, sep='|', usecols=[0, 1, 2], header=None)
     semanticnetwork.columns = ['STYID', 'LANG', 'STY']
     semanticnetwork = semanticnetwork.astype({"STYID": 'int32'})
@@ -76,8 +76,8 @@ def load_bios_semanticnetwork() -> pd.DataFrame:
     return semanticnetwork
 
 def load_filtered_bios_relations() -> pd.DataFrame:
-    relations_fp = os.path.join(cfg.BIOS, f'relations.csv')
-    if not os.path.exists(relations_fp):
+    relations_fp = join(cfg.BIOS, f'relations.csv')
+    if not exists(relations_fp):
         conceptterms = load_bios_conceptterms()
         seeds = set(load_topic_words())
         conceptterms['flag'] = conceptterms['STR'].apply(lambda text: text in seeds)
@@ -91,8 +91,8 @@ def load_filtered_bios_relations() -> pd.DataFrame:
     return relations
 
 def load_filtered_bios_metainfo() -> pd.DataFrame:
-    metainfo_fp = os.path.join(cfg.BIOS, f'metainfo.tsv')
-    if not os.path.exists(metainfo_fp):
+    metainfo_fp = join(cfg.BIOS, f'metainfo.tsv')
+    if not exists(metainfo_fp):
         relations = load_filtered_bios_relations()
         conceptterms = load_bios_conceptterms()
         rel_cids = set(relations['CID_HEAD'].tolist() + relations['CID_TAIL'].tolist())
@@ -133,7 +133,7 @@ def load_filtered_bios_metainfo() -> pd.DataFrame:
     return metainfo
 
 def load_cpubmed():
-    src_fp = os.path.join(cfg.CPUBMED_SRC, "CPubMed-KGv1_1.txt")
+    src_fp = join(cfg.CPUBMED_SRC, "CPubMed-KGv1_1.txt")
     try:
         data = pd.read_csv(src_fp, sep='\t', header=0, quoting=csv.QUOTE_NONE)
     except:
@@ -165,8 +165,8 @@ def load_cpubmed():
     return data
 
 def load_filtered_cpubmed_relations():
-    relations_fp = os.path.join(cfg.CPUBMED, f'relations.csv')
-    if not os.path.exists(relations_fp):
+    relations_fp = join(cfg.CPUBMED, f'relations.csv')
+    if not exists(relations_fp):
         all_relations = load_cpubmed()
         seeds = set(load_topic_words())
         relations = all_relations[(all_relations['HEAD_ENT'].isin(seeds)) & (all_relations['TAIL_ENT'].isin(seeds))]
@@ -188,13 +188,13 @@ def clean_medqa_question_(question_jsonl: dict) -> dict:
     return question_jsonl
 
 def load_medqa() -> pd.DataFrame:
-    combined_path = os.path.join(cfg.MEDQA_EXT, 'combined.tsv')
-    if os.path.exists(combined_path):
+    combined_path = join(cfg.MEDQA_EXT, 'combined.tsv')
+    if exists(combined_path):
         data = utils.load_sheet(combined_path, converters={'options': utils.convert_list_str_to_list})
     else:
         source = []
         for s in ['dev', 'test', 'train']:
-            fp      = os.path.join(cfg.MEDQA_SRC, f"{s}.jsonl")
+            fp      = join(cfg.MEDQA_SRC, f"{s}.jsonl")
             source += utils.load_jsonl(fp)
         cleaned_data = []
         for q in source:
@@ -228,12 +228,12 @@ def preload_mlecqa_():
         data_dump = []
         for split in ['dev', 'test', 'train']:
             fn = f"{cat}_{split}.json"
-            fp = os.path.join(cfg.MLECQA_SRC, fn)
+            fp = join(cfg.MLECQA_SRC, fn)
             data = utils.load_json(fp)
             data = [{k: v.replace('　', '  ') if '　' in v else v for k, v in d.items()} for d in data]
             data = [utils.filter_dict_keys_(dic) for dic in data]
             data_dump += data
-        dst_path = os.path.join(cfg.MLECQA_EXT, f"{cat}.jsonl")
+        dst_path = join(cfg.MLECQA_EXT, f"{cat}.jsonl")
         utils.save_jsonl(data_dump, dst=dst_path)
 
 def load_mlecqa() -> pd.DataFrame:
@@ -244,15 +244,15 @@ def load_mlecqa() -> pd.DataFrame:
         2. Remove the additional white space and line break of each
             sample for both its answer and question
     """
-    combined_path = os.path.join(cfg.MLECQA_EXT, 'combined.tsv')
-    if os.path.exists(combined_path):
+    combined_path = join(cfg.MLECQA_EXT, 'combined.tsv')
+    if exists(combined_path):
         data = utils.load_sheet(combined_path, converters={'options': utils.convert_list_str_to_list})
     else:
         jsonls = []
         for cat in cfg.MLECQA_CATEGORY:
             fn = f"{cat}.jsonl"
-            fp = os.path.join(cfg.MLECQA_EXT, fn)
-            if not os.path.exists(fp): preload_mlecqa_()
+            fp = join(cfg.MLECQA_EXT, fn)
+            if not exists(fp): preload_mlecqa_()
             jsonls += utils.load_jsonl(fp)
         data = {k: [] for k in cfg.MLECQA_FILTERED_KEYS}
         for k in cfg.MLECQA_FILTERED_KEYS:
@@ -333,8 +333,8 @@ def preprocess_mlecqa_(data:pd.DataFrame, original_q_maxlen=20, qa_minlen=10, qa
 
 def load_filtered_mlecqa_qa(data: pd.DataFrame, folder=cfg.MLECQA, save=True):
     # Can also be used in MedQA.
-    fp = os.path.join(folder, f"qa.tsv")
-    if not os.path.exists(fp):
+    fp = join(folder, f"qa.tsv")
+    if not exists(fp):
         words = set(load_topic_words())
         pattern = '|'.join(words)
         if 'context' in data:
@@ -376,15 +376,15 @@ def main():
     load_filtered_cpubmed_relations()
     medqa  = load_medqa()
     medqa  = preprocess_mlecqa_(medqa)
-    utils.save_sheet(medqa, os.path.join(cfg.MEDQA_EXT, "qa.tsv"))
+    utils.save_sheet(medqa, join(cfg.MEDQA_EXT, "qa.tsv"))
     medqa  = load_filtered_mlecqa_qa(medqa, folder=cfg.MEDQA, save=True)
     mlecqa = load_mlecqa()
     mlecqa = preprocess_mlecqa_(mlecqa)
-    utils.save_sheet(mlecqa, os.path.join(cfg.MLECQA_EXT, "qa.tsv"))
+    utils.save_sheet(mlecqa, join(cfg.MLECQA_EXT, "qa.tsv"))
     mlecqa = load_filtered_mlecqa_qa(mlecqa, folder=cfg.MLECQA, save=True)
     mlecqa, medqa = filter_by_duplication(mlecqa, medqa)
-    utils.save_sheet(medqa,  fp=os.path.join(cfg.MEDQA,  "qa.tsv"))
-    utils.save_sheet(mlecqa, fp=os.path.join(cfg.MLECQA, "qa.tsv"))
+    utils.save_sheet(medqa,  fp=join(cfg.MEDQA,  "qa.tsv"))
+    utils.save_sheet(mlecqa, fp=join(cfg.MLECQA, "qa.tsv"))
 
 if __name__ == "__main__":
     main()

@@ -6,6 +6,7 @@ import utils
 import config as cfg
 import numpy as np
 from config import *
+from os.path import join
 
 def replace_last_appear_(statement:str, pattern:str, replace_item:str):
     """
@@ -27,7 +28,7 @@ def replace_last_appear_(statement:str, pattern:str, replace_item:str):
     else:
         raise ValueError
 
-def extract_similar_substring_(source, string):
+def extract_similar_substring_(source: str, string: str):
     # Retrieve a most similar substring from the source that matches the given string.
     start_index, end_index = [], []
     for i in range(0, len(source)):
@@ -62,7 +63,7 @@ def replacement_(statement: str, answer: str, wrong_answers: list, wrong_answer_
                 false_statement = np.nan
     if false_statement == statement or false_statement == np.nan:
         substring = extract_similar_substring_(statement, answer)
-        if utils.levenshtein_distance(substring, answer) <= 2:
+        if isinstance(substring, str) and utils.levenshtein_distance(substring, answer) <= 2:
             false_statement = statement.replace(substring, wrong_answer)
             print(f"Replacement Succeed: {statement}--{answer}--{wrong_answer}")
         else:
@@ -110,7 +111,7 @@ def cpubmed_select_wrong_answer_(entity, all_entities):
 def main(args):
     if args.dataset == "BIOS":
         folder  = cfg.BIOS
-        fp = os.path.join(folder, "statements.tsv")
+        fp = join(folder, "statements.tsv")
         cid2term = bios_cid2term_()
         data     = utils.load_sheet(fp)
         answers  = data['TERM_TAIL'].tolist()
@@ -119,7 +120,7 @@ def main(args):
         wrong_answers = [[bios_select_wrong_answer_(a, cid2term)] for a in cids]
     elif args.dataset == "CPUBMED":
         folder  = cfg.CPUBMED
-        fp = os.path.join(folder, "statements.tsv")
+        fp = join(folder, "statements.tsv")
         data    = utils.load_sheet(fp)
         rels    = data["REL"].tolist()
         heads   = data["HEAD_ENT"].tolist()
@@ -135,14 +136,14 @@ def main(args):
             folder = cfg.MEDQA
         else:
             folder = cfg.MLECQA
-        fp   = os.path.join(folder, "statements.tsv")
+        fp   = join(folder, "statements.tsv")
         data = utils.load_sheet(fp, converters={'wrong_answer': utils.convert_list_str_to_list})
         wrong_answers = data['wrong_answer'].tolist()
         answers = data['answer'].tolist()
     statements = data["statement"].tolist()
     false_statements = batch_replacement_(statements, answers, wrong_answers)
     data[f'statement-rep'] = false_statements
-    save_fp = os.path.join(folder, "statements-rep.tsv")
+    save_fp = join(folder, "statements-rep.tsv")
     utils.save_sheet(data, save_fp)
 
 if __name__ == '__main__':

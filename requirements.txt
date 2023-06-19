@@ -9,3 +9,4 @@ stanza == 1.5.0
 tqdm == 4.65.0
 transformers == 4.27.4
 sentencepiece == 0.1.99
+pyarrow == 12.0.1

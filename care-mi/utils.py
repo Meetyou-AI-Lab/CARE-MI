@@ -1,13 +1,14 @@
 import json
 import ast
-import os
 import config as cfg
 import pandas as pd
+import os
+from os.path import join, exists, dirname
 
 def save_sheet(data: pd.DataFrame, fp: str):
-    dir_path = os.path.dirname(fp)
+    dir_path = dirname(fp)
     postfix  = fp.split('.')[-1]
-    if not os.path.exists(dir_path):
+    if not exists(dir_path):
         os.makedirs(dir_path)
     if postfix   == 'csv': data.to_csv(fp, index=False)
     elif postfix == 'xlsx': data.to_excel(fp, index=False)
@@ -82,7 +83,7 @@ def load_stopwords():
     for fn in os.listdir(folder):
         if fn.split(".")[-1] != 'txt':
             continue
-        fp = os.path.join(folder, fn)
+        fp = join(folder, fn)
         with open(fp, 'r', encoding='utf-8') as reader:
             words = reader.readlines()
             words = [i.strip() for i in words]

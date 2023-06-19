@@ -1,3 +1,4 @@
+from os.path import join
 import os
 import argparse
 import utils
@@ -38,18 +39,18 @@ def CPUBMED_STATEMENT_TEMPLATES_(rel: str, head: str, tail: str) -> str:
     return s
 
 def CPUBMED_construct_statements_():
-    fp   = os.path.join(cfg.CPUBMED, "relations.csv")
+    fp   = join(cfg.CPUBMED, "relations.csv")
     data = utils.load_sheet(fp)
     rels = data['REL'].tolist()
     heads = data['HEAD_ENT'].tolist()
     tails = data['TAIL_ENT'].tolist()
     statements = [CPUBMED_STATEMENT_TEMPLATES_(rels[i], heads[i], tails[i]) for i in range(len(data))]
     data[f'statement'] = statements
-    save_fp = os.path.join(cfg.CPUBMED, "statements.tsv")
+    save_fp = join(cfg.CPUBMED, "statements.tsv")
     utils.save_sheet(data, save_fp)
 
 def BIOS_construct_statements_():
-    fp   = os.path.join(cfg.BIOS, f'metainfo.tsv')
+    fp   = join(cfg.BIOS, f'metainfo.tsv')
     data = utils.load_sheet(fp)
     statements = []
     for item in data.iterrows():
@@ -68,7 +69,7 @@ def BIOS_construct_statements_():
         elif rel == '是一种（反向）': statements.append(f"{head}包含{tail}")
         else: statements.append(f"{head}{rel}{tail}")
     data['statement'] = statements
-    save_fp = os.path.join(cfg.BIOS, f'statements.tsv')
+    save_fp = join(cfg.BIOS, f'statements.tsv')
     utils.save_sheet(data, fp=save_fp)
     return data
 
@@ -80,7 +81,7 @@ def main(args):
             CPUBMED_construct_statements_()
     except:
         print(f"Doing preprocessing for {args.dataset} now...")
-        os.system(f"python {os.path.join(cfg.CODE, 'preprocess.py')}")
+        os.system(f"python {join(cfg.CODE, 'preprocess.py')}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('Building statements from KG datasets.')

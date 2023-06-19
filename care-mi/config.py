@@ -3,33 +3,33 @@ import sys
 
 OPENAI_API_KEY = "" # Place your OpenAI key here.
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = dirname(dirname(abspath(__file__)))
 sys.path.append(ROOT)
-DATA = os.path.join(ROOT, "data")
-CODE = os.path.join(ROOT, "care-mi")
-CORPUS = os.path.join(ROOT, "corpus")
+DATA = join(ROOT, "data")
+CODE = join(ROOT, "care-mi")
+CORPUS = join(ROOT, "corpus")
 
-TEXTBOOK  = os.path.join(CORPUS, "textbook")
-WIKIPEDIA = os.path.join(CORPUS, "wikipedia")
-STOPWORDS = os.path.join(CORPUS, "stopwords")
+TEXTBOOK  = join(CORPUS, "textbook")
+WIKIPEDIA = join(CORPUS, "wikipedia")
+STOPWORDS = join(CORPUS, "stopwords")
 
-BENCHMARK = os.path.join(DATA, "benchmark")
+BENCHMARK = join(DATA, "benchmark")
 
-BIOS     = os.path.join(DATA, "BIOS")
-CPUBMED  = os.path.join(DATA, "CPUBMED")
-MEDQA    = os.path.join(DATA, "MEDQA")
-MLECQA   = os.path.join(DATA, "MLECQA")
-WORDLIST = os.path.join(DATA, "WORDLIST")
+BIOS     = join(DATA, "BIOS")
+CPUBMED  = join(DATA, "CPUBMED")
+MEDQA    = join(DATA, "MEDQA")
+MLECQA   = join(DATA, "MLECQA")
+WORDLIST = join(DATA, "WORDLIST")
 
-BIOS_SRC     = os.path.join(BIOS, "original")
-CPUBMED_SRC  = os.path.join(CPUBMED, "original")
-MEDQA_SRC    = os.path.join(MEDQA, "original")
-MLECQA_SRC   = os.path.join(MLECQA, "original")
+BIOS_SRC     = join(BIOS, "original")
+CPUBMED_SRC  = join(CPUBMED, "original")
+MEDQA_SRC    = join(MEDQA, "original")
+MLECQA_SRC   = join(MLECQA, "original")
 
-BIOS_EXT     = os.path.join(BIOS, "extracted")
-CPUBMED_EXT  = os.path.join(CPUBMED, "extracted")
-MEDQA_EXT    = os.path.join(MEDQA, "extracted")
-MLECQA_EXT   = os.path.join(MLECQA, "extracted")
+BIOS_EXT     = join(BIOS, "extracted")
+CPUBMED_EXT  = join(CPUBMED, "extracted")
+MEDQA_EXT    = join(MEDQA, "extracted")
+MLECQA_EXT   = join(MLECQA, "extracted")
 
 MLECQA_CATEGORY      = ["Clinic", "CWM", "PublicHealth", "Stomatology", "TCM"]
 MLECQA_FILTERED_KEYS = ["qtext", "options", "answer"]

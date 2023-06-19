@@ -121,7 +121,7 @@ python benchmark.py --datasets BIOS CPUBMED MEDQA MLECQA
 
 Do the knowledge retrieval by running:
 ```
-python retrieval.py --corpus textbook --retriever BM250Okapi --n 3
+python retrieval.py --corpus textbook --retriever BM25Okapi --n 3
 ```
 
 - `--corpus`: Corpus that is utilized for retrieval. Options include `wikipedia` and `textbook`.

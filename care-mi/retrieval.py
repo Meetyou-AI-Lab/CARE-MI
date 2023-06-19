@@ -1,10 +1,10 @@
-import os
 import stanza
 import utils
 import argparse
 import config as cfg
 import pandas as pd
 import numpy as np
+from os.path import join, exists
 from tqdm import tqdm
 from rank_bm25 import BM25Okapi, BM25L, BM25Plus
 
@@ -14,7 +14,7 @@ def load_corpus(corpus="wikipedia", length_threshold=10):
         folder = cfg.WIKIPEDIA
     elif corpus == "textbook":
         folder = cfg.TEXTBOOK
-    fp = os.path.join(folder, "paragraphs.txt")
+    fp = join(folder, "paragraphs.txt")
     with open(fp, "r", encoding="utf-8") as reader:
         book = reader.readlines()
     book = [i.strip() for i in book]
@@ -43,8 +43,8 @@ def pretokenize_corpus_(processor: stanza.Pipeline, stopwords: set, corpus="text
     elif corpus == "textbook":
         folder = cfg.TEXTBOOK
     corpus = load_corpus(corpus)
-    cur_fp = os.path.join(folder, "tokenized_paragraphs.tsv")
-    if os.path.exists(cur_fp):
+    cur_fp = join(folder, "tokenized_paragraphs.tsv")
+    if exists(cur_fp):
         print("Tokenized data already created.")
         data = utils.load_sheet(cur_fp, converters={"tokens": utils.convert_list_str_to_list})
         assert len(corpus) == len(data)
@@ -62,7 +62,7 @@ def retrieval_bm25(queries: list, corpus='textbook', retriever="BM25Okapi", n=3)
     elif retriever == "BM25L":     retriever = BM25L
     elif retriever == "BM25Plus":  retriever = BM25Plus
     else: raise NotImplementedError(f"Retrieval functions not found in `rank_bm25`.")
-    processor = stanza.Pipeline("zh-hans", processors="tokenize", tokenize_with_jieba=True, download_method=None)
+    processor = stanza.Pipeline("zh-hans", processors="tokenize", tokenize_with_jieba=True)
     stopwords = set(utils.load_stopwords())
     query_tokens = [preprocess_query_(processor, q, stopwords) for q in queries]
     data      = pretokenize_corpus_(processor, stopwords, corpus)
@@ -79,7 +79,7 @@ def retrieval_bm25(queries: list, corpus='textbook', retriever="BM25Okapi", n=3)
     return top_n_docs
 
 def main(args):
-    fp   = os.path.join(cfg.BENCHMARK, "questions_original.tsv")
+    fp   = join(cfg.BENCHMARK, "questions_original.tsv")
     data = utils.load_sheet(fp)
     queries = []
     for idx, col in enumerate(['context', 'answer']):
@@ -96,7 +96,7 @@ def main(args):
         n=args.n)
     for i in range(args.n):
         data[f"{args.corpus}_{i + 1}"] = utils.padding_column([docs[i] for docs in top_n_docs], max_len=len(data))
-    save_fp = os.path.join(cfg.BENCHMARK, "questions_retrieval.tsv")
+    save_fp = join(cfg.BENCHMARK, "questions_retrieval.tsv")
     utils.save_sheet(data, save_fp)
 
 if __name__ == '__main__':
