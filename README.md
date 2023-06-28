@@ -183,14 +183,14 @@ Note: *We only randomly select 200 questions from the benchmark for human baseli
 
 ## Judgment models
 
-Since the human evaluation can be time-consuming and expensive, we explore the usage of judgment models as a proxy for human supervision. To this end, we fine-tune judgment models using the labels given by human annotators. We try four models:
+Since the human evaluation can be time-consuming and expensive, we explore the usage of judgment models as a proxy for human supervision. To this end, we fine-tune judgment models using the data labeled by human annotators as well as generated synthetic data. We try four models:
 
 - `BERT-Large`
 - `GPT-3-350M`
 - `GPT-3-6.7B`
 - `LLaMA-13B-T` 
 
-For the fine-tuning, for each sample, we concatenate the question, corresponding knowledge, and the model output together and feed them to the model. Each sample has a label given by the annotators. For fine-tuning `GPT-3-350M` and `GPT-3-6.7B`, please check the instruction given by [OpenAI](https://platform.openai.com/docs/guides/fine-tuning). For fine-tuning `LLaMA-13-T`, please check [fastchat](https://github.com/lm-sys/FastChat).
+For the fine-tuning, for each sample, we concatenate the question, corresponding knowledge, and the model output together and feed them to the model. Each sample has a label given by the annotators (for LLM output) or generated (for synthetic data). For fine-tuning `GPT-3-350M` and `GPT-3-6.7B`, please check the instruction given by [OpenAI](https://platform.openai.com/docs/guides/fine-tuning). For fine-tuning `LLaMA-13-T`, please check [fastchat](https://github.com/lm-sys/FastChat).
 
 The performance of each judgment model is shown below:
 
