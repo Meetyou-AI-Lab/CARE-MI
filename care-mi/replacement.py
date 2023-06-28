@@ -71,14 +71,14 @@ def replacement_(statement: str, answer: str, wrong_answers: list, wrong_answer_
         false_statement = np.nan
     return false_statement
 
-def batch_replacement_(statements, answers, wrong_answers):
+def batch_replacement_(statements: list, answers: list, wrong_answers: list) -> list:
     false_statements = []
     for i in range(len(statements)):
         false_statement = replacement_(statements[i], answers[i], wrong_answers[i])
         false_statements.append(false_statement)
     return false_statements
 
-def bios_cid2term_():
+def bios_cid2term_() -> dict:
     concept_terms = preprocess.load_bios_conceptterms()
     cids  = concept_terms['CID']
     terms = concept_terms['STR']
@@ -90,7 +90,7 @@ def bios_cid2term_():
             cid2term[cid] = [term]
     return cid2term
 
-def bios_select_wrong_answer_(cid, cid2term):
+def bios_select_wrong_answer_(cid: str, cid2term: dict):
     assert cid in cid2term
     cids = list(cid2term.keys())
     wrong_cid = random.choice(cids)
@@ -102,7 +102,7 @@ def bios_select_wrong_answer_(cid, cid2term):
     wrong_term = random.choice(wrong_terms)
     return str(wrong_term)
 
-def cpubmed_select_wrong_answer_(entity, all_entities):
+def cpubmed_select_wrong_answer_(entity: str, all_entities: list):
     wrong_entity = random.choice(all_entities)
     while wrong_entity == entity:
         wrong_entity = random.choice(all_entities)

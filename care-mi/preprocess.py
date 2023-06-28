@@ -132,7 +132,7 @@ def load_filtered_bios_metainfo() -> pd.DataFrame:
         metainfo = utils.load_sheet(metainfo_fp)
     return metainfo
 
-def load_cpubmed():
+def load_cpubmed() -> pd.DataFrame:
     src_fp = join(cfg.CPUBMED_SRC, "CPubMed-KGv1_1.txt")
     try:
         data = pd.read_csv(src_fp, sep='\t', header=0, quoting=csv.QUOTE_NONE)
@@ -164,7 +164,7 @@ def load_cpubmed():
     data = data.drop(columns=['HEAD', 'TAIL']).dropna()
     return data
 
-def load_filtered_cpubmed_relations():
+def load_filtered_cpubmed_relations() -> pd.DataFrame:
     relations_fp = join(cfg.CPUBMED, f'relations.csv')
     if not exists(relations_fp):
         all_relations = load_cpubmed()
@@ -331,7 +331,7 @@ def preprocess_mlecqa_(data:pd.DataFrame, original_q_maxlen=20, qa_minlen=10, qa
     data = data.reset_index(drop=True)
     return data
 
-def load_filtered_mlecqa_qa(data: pd.DataFrame, folder=cfg.MLECQA, save=True):
+def load_filtered_mlecqa_qa(data: pd.DataFrame, folder=cfg.MLECQA, save=True) -> pd.DataFrame:
     # Can also be used in MedQA.
     fp = join(folder, f"qa.tsv")
     if not exists(fp):
@@ -352,7 +352,7 @@ def load_filtered_mlecqa_qa(data: pd.DataFrame, folder=cfg.MLECQA, save=True):
     return data
 
 def filter_by_duplication(
-        file_1, file_2,
+        file_1: pd.DataFrame, file_2: pd.DataFrame,
         subset_columns=['context', 'answer', 'question'],
         keep='last'):
     """
