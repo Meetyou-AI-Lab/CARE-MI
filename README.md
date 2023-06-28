@@ -21,11 +21,11 @@ The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&na
 
 ## Overview
 
-The benchmark is and only is for evaluating the misinformation in long-form (LF) generation for Chinese Large Language Model (LLM) in the maternity and infant care domain; it is constructed on top of existing knowledge graph (KG) datasets and multiple-choice (MC) datasets. Theoretically speaking, it is easy to transfer our pipeline to other knowledge-intensive domains or low-resourced languages. An illustration of our benchmark construction pipeline is shown below. 
+The benchmark is and only is for evaluating the misinformation in long-form (LF) generation for Chinese Large Language Models (LLMs) in the maternity and infant care domain; it is constructed on top of existing knowledge graph (KG) datasets and multiple-choice (MC) question-answering (QA) datasets. Theoretically speaking, it is easy to transfer our benchmark construction pipeline to other knowledge-intensive domains or low-resourced languages. An illustration of our benchmark construction pipeline is shown below. 
 
 ![benchmark-pipeline](figs/benchmark-pipeline.png)
 
-We include two types of questions in the benchmark:
+We construct two types of questions in the benchmark:
 
 - **True/False (TF) Question**: Given a question, the LLM is required to judge whether the claim in the question is correct or not.
 - **Open-End (OE) Question**: Given a question, the LLM is allowed to provide a free-form, open-ended answer in response to the question. Unlike TF questions, the answers to OE questions are not limited to True/False judgments.

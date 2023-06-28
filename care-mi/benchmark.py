@@ -1,5 +1,5 @@
 import utils
-from os.path import join, exists
+from os.path import join
 import argparse
 import pandas as pd
 import config as cfg

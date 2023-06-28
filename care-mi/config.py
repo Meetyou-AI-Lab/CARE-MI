@@ -1,9 +1,9 @@
-import os
+from os.path import join, dirname, abspath
 import sys
 
 OPENAI_API_KEY = "" # Place your OpenAI key here.
 
-ROOT = dirname(dirname(abspath(__file__)))
+ROOT =  dirname(dirname(abspath(__file__)))
 sys.path.append(ROOT)
 DATA = join(ROOT, "data")
 CODE = join(ROOT, "care-mi")
