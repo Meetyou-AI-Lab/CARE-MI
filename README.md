@@ -14,7 +14,7 @@ The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&na
       <li>Wangyue Li (<a href="mailto:liwangyue@xiaoyouzi.com">liwangyue@xiaoyouzi.com</a>)
       <li>Mingbai Bai (<a href="mailto:baimingbai@xiaoyouzi.com">baimingbai@xiaoyouzi.com</a>)
       <li>Lu Wei (<a href="mailto:weilu@xiaoyouzi.com">weilu@xiaoyouzi.com</a>)
-      <li>Bowen Wang (<a href="mailto:bowen.wang@is.ids.osaka-u.ac.jp">bowen.wang@is.ids.osaka-u.ac.jp</a>)
+      <li>Bowen Wang (<a href="mailto:wang@ids.osaka-u.ac.jp">wang@ids.osaka-u.ac.jp</a>)
       <li>Noa Garcia (<a href="mailto:noagarcia@ids.osaka-u.ac.jp">noagarcia@ids.osaka-u.ac.jp</a>)
   </ul>
 </div>
