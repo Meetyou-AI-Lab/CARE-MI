@@ -21,6 +21,14 @@ The paper is currently on [arXiv](https://arxiv.org/abs/2307.01458). The benchma
 
 <sup>*</sup>Corresponding author.
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Requirements](#requirements)
+3. [Benchmark construction](#benchmark-construction)
+4. [Results](#results)
+5. [Judgment models](#judgment-models)
+6. [Citation](#citation)
+
 ## Overview
 
 The benchmark is and only is for evaluating the misinformation in long-form (LF) generation for Chinese Large Language Models (LLMs) in the maternity and infant care domain; it is constructed on top of existing knowledge graph (KG) datasets and multiple-choice (MC) question-answering (QA) datasets. Theoretically speaking, it is easy to transfer our benchmark construction pipeline to other knowledge-intensive domains or low-resourced languages. An illustration of our benchmark construction pipeline is shown below. 
@@ -142,15 +150,15 @@ We evaluate the following models (:heavy_check_mark: means available, :x: indica
 
 | Model         | Huggingface                                     | Github                                    |
 |---------------|-------------------------------------------------|-------------------------------------------|
-| `MOSS-16B-SFT`  | :heavy_check_mark: [[link]](https://huggingface.co/fnlp/moss-moon-003-sft)  | :heavy_check_mark: [[link]](https://github.com/OpenLMLab/MOSS)       |
-| `ChatGLM-6B`    | :heavy_check_mark: [[link]](https://huggingface.co/THUDM/chatglm-6b)        | :heavy_check_mark: [[link]](https://github.com/THUDM/ChatGLM-6B)     |
-| `BELLE-7B-2M`   | :heavy_check_mark: [[link]](https://huggingface.co/BelleGroup/BELLE-7B-2M)  | :heavy_check_mark: [[link]](https://github.com/LianjiaTech/BELLE)    |
-| `BELLE-7B-0.2M` | :heavy_check_mark: [[link]](https://huggingface.co/BelleGroup/BELLE-7B-0.2M)| :heavy_check_mark: [[link]](https://github.com/LianjiaTech/BELLE)    |
-| `GPT-4`         |                     :x:                       |                    :x:                    |
-| `GPT-3.5-turbo` |                     :x:                       |                 :x:                       |
-| `LLaMA-13B-T`   |                      :o: [[link]](https://huggingface.co/docs/transformers/main/model_doc/llama)                      | :heavy_check_mark: [[link]](https://github.com/facebookresearch/llama) |
+| MOSS-16B-SFT  | :heavy_check_mark: [[link]](https://huggingface.co/fnlp/moss-moon-003-sft)  | :heavy_check_mark: [[link]](https://github.com/OpenLMLab/MOSS)       |
+| ChatGLM-6B    | :heavy_check_mark: [[link]](https://huggingface.co/THUDM/chatglm-6b)        | :heavy_check_mark: [[link]](https://github.com/THUDM/ChatGLM-6B)     |
+| BELLE-7B-2M   | :heavy_check_mark: [[link]](https://huggingface.co/BelleGroup/BELLE-7B-2M)  | :heavy_check_mark: [[link]](https://github.com/LianjiaTech/BELLE)    |
+| BELLE-7B-0.2M | :heavy_check_mark: [[link]](https://huggingface.co/BelleGroup/BELLE-7B-0.2M)| :heavy_check_mark: [[link]](https://github.com/LianjiaTech/BELLE)    |
+| GPT-4         |                     :x:                       |                    :x:                    |
+| GPT-3.5-turbo |                     :x:                       |                 :x:                       |
+| LLaMA-13B-T   |                      :o: [[link]](https://huggingface.co/docs/transformers/main/model_doc/llama)                      | :heavy_check_mark: [[link]](https://github.com/facebookresearch/llama) |
 
-Note that we further pretrain and fine-tune the original `LLaMA-13B` with Chinese corpus and selected instruction following tasks to obtain `LLaMA-13B-T`. We refer the readers to its original [github page](https://github.com/facebookresearch/llama) and [fastchat](https://github.com/lm-sys/FastChat) for further details about pretraining and fine-tuning a `LLaMA` model.
+Note that we further pretrain and fine-tune the original LLaMA-13B with Chinese corpus and selected instruction following tasks to obtain LLaMA-13B-T. We refer the readers to its original [github page](https://github.com/facebookresearch/llama) and [fastchat](https://github.com/lm-sys/FastChat) for further details about pretraining and fine-tuning a LLaMA model.
 
 The following tables present the human evaluation results of LLMs tested on our proposed benchmark, on two different metrics, e.g., correctness and interpretability. For the evaluation, each annotator is required to assign a scalar between 0 and 1 for each metric on each sample. Best performanced models are bolded and the second best ones are underlined. More details can be found in the paper.
 
@@ -187,12 +195,12 @@ Note: *We only randomly select 200 questions from the benchmark for human baseli
 
 Since the human evaluation can be time-consuming and expensive, we explore the usage of judgment models as a proxy for human supervision. To this end, we fine-tune judgment models using the data labeled by human annotators as well as generated synthetic data. We try four models:
 
-- `BERT-Large`
-- `GPT-3-350M`
-- `GPT-3-6.7B`
-- `LLaMA-13B-T` 
+- BERT-Large
+- GPT-3-350M
+- GPT-3-6.7B
+- LLaMA-13B-T
 
-For the fine-tuning, for each sample, we concatenate the question, corresponding knowledge, and the model output together and feed them to the model. Each sample has a label given by the annotators (for LLM output) or generated (for synthetic data). For fine-tuning `GPT-3-350M` and `GPT-3-6.7B`, please check the instruction given by [OpenAI](https://platform.openai.com/docs/guides/fine-tuning). For fine-tuning `LLaMA-13-T`, please check [fastchat](https://github.com/lm-sys/FastChat).
+For the fine-tuning, for each sample, we concatenate the question, corresponding knowledge, and the model output together and feed them to the model. Each sample has a label given by the annotators (for LLM output) or generated (for synthetic data). For fine-tuning GPT-3-350M and GPT-3-6.7B, please check the instruction given by [OpenAI](https://platform.openai.com/docs/guides/fine-tuning). For fine-tuning LLaMA-13-T, please check [fastchat](https://github.com/lm-sys/FastChat).
 
 The performance of each judgment model is shown below:
 
@@ -213,7 +221,7 @@ The performance of each judgment model is shown below:
 
 ## Citation
 
-**If the paper, codes, or the dataset inspire you, please kindly cite us:**
+**If the paper, codes, or the dataset inspire you, please cite us:**
 
 ```
 @article{xiang2023care,
