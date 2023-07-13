@@ -2,20 +2,20 @@
 
 This repository is the official implementation of **CARE-MI**. It contains the codes for reproducing the benchmark construction procedure and experiment related information. Examples of the benchmark can be found in `examples.tsv`.
 
-The paper can be found [here](https://openreview.net/attachment?id=CpFFRtxcbz&name=pdf). The benchmark will be made public at a later stage.
+The paper is currently on [arXiv](https://arxiv.org/abs/2307.01458). The benchmark will be made public at a later stage.
 
 
 **Authors**:
 
 <div style="overflow: hidden;">
   <ul>
-      <li>Tong Xiang (<a href="mailto:xiangtong@xiaoyouzi.com">xiangtong@xiaoyouzi.com</a>)
+      <li>Tong Xiang  (<a href="mailto:xiangtong@xiaoyouzi.com">xiangtong@xiaoyouzi.com</a>)
       <li>Liangzhi Li (<a href="mailto:liliangzhi@xiaoyouzi.com">liliangzhi@xiaoyouzi.com</a>)
-      <li>Wangyue Li (<a href="mailto:liwangyue@xiaoyouzi.com">liwangyue@xiaoyouzi.com</a>)
+      <li>Wangyue Li  (<a href="mailto:liwangyue@xiaoyouzi.com">liwangyue@xiaoyouzi.com</a>)
       <li>Mingbai Bai (<a href="mailto:baimingbai@xiaoyouzi.com">baimingbai@xiaoyouzi.com</a>)
-      <li>Lu Wei (<a href="mailto:weilu@xiaoyouzi.com">weilu@xiaoyouzi.com</a>)
-      <li>Bowen Wang (<a href="mailto:wang@ids.osaka-u.ac.jp">wang@ids.osaka-u.ac.jp</a>)
-      <li>Noa Garcia (<a href="mailto:noagarcia@ids.osaka-u.ac.jp">noagarcia@ids.osaka-u.ac.jp</a>)
+      <li>Lu Wei      (<a href="mailto:weilu@xiaoyouzi.com">weilu@xiaoyouzi.com</a>)
+      <li>Bowen Wang  (<a href="mailto:wang@ids.osaka-u.ac.jp">wang@ids.osaka-u.ac.jp</a>)
+      <li>Noa Garcia  (<a href="mailto:noagarcia@ids.osaka-u.ac.jp">noagarcia@ids.osaka-u.ac.jp</a>)
   </ul>
 </div>
 
@@ -214,10 +214,10 @@ The performance of each judgment model is shown below:
 **If the paper, codes, or the dataset inspire you, please kindly cite us:**
 
 ```
-@inproceedings{xiang2023caremi,
-    title={CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care},
-    author={Xiang, Tong and Li, Liangzhi and Li, Wangyue and Bai, Mingbai and Wei, Lu and Wang, Bowen and Garcia, Noa},
-    booktitle={OpenReview},
-    year={2023}
+@article{xiang2023care,
+  title={CARE-MI: Chinese Benchmark for Misinformation Evaluation in Maternity and Infant Care},
+  author={Xiang, Tong and Li, Liangzhi and Li, Wangyue and Bai, Mingbai and Wei, Lu and Wang, Bowen and Garcia, Noa},
+  journal={arXiv preprint arXiv:2307.01458},
+  year={2023}
 }
 ```
