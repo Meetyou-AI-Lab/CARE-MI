@@ -37,7 +37,7 @@ The paper is currently on [arXiv](https://arxiv.org/abs/2307.01458). The benchma
 
 The benchmark is and only is for evaluating the misinformation in long-form (LF) generation for Chinese Large Language Models (LLMs) in the maternity and infant care domain; it is constructed on top of existing knowledge graph (KG) datasets and multiple-choice (MC) question-answering (QA) datasets. Theoretically speaking, it is easy to transfer our benchmark construction pipeline to other knowledge-intensive domains or low-resourced languages. An illustration of our benchmark construction pipeline is shown below. 
 
-![benchmark-pipeline](figs/benchmark-pipeline.jpg)
+![benchmark-pipeline](figs/benchmark-pipeline.png)
 
 We construct two types of questions in the benchmark:
 
