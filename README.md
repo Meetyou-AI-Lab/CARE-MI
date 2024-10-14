@@ -13,7 +13,7 @@ The paper is currently on [arXiv](https://arxiv.org/abs/2307.01458). The benchma
 
 <div style="overflow: hidden;">
   <ul>
-    <li>Tong Xiang  (<a href="mailto:xiangtong@xiaoyouzi.com">xiangtong@xiaoyouzi.com</a>)
+    <li>Tong Xiang  (<a href="mailto:tongxiang@is.ids.osaka-u.ac.jp">tongxiang@is.ids.osaka-u.ac.jp</a>)
     <li>Liangzhi Li (<a href="mailto:liliangzhi@xiaoyouzi.com">liliangzhi@xiaoyouzi.com</a>)<sup>*</sup>
     <li>Wangyue Li  (<a href="mailto:liwangyue@xiaoyouzi.com">liwangyue@xiaoyouzi.com</a>)
     <li>Mingbai Bai (<a href="mailto:baimingbai@xiaoyouzi.com">baimingbai@xiaoyouzi.com</a>)
